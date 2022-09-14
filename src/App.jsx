@@ -8,7 +8,7 @@ import NotFound from "./NotFound";
 
 function App() {
   const discount = "10% OFF SALE!";
-
+  const suraj = 1;
   const savedDataString = localStorage.getItem("my-cart") || "{}";
   const savedData = JSON.parse(savedDataString);
   const [cart, setCart] = useState(savedData);
