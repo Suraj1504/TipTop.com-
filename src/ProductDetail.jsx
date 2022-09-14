@@ -35,6 +35,7 @@ function ProductDetail({ onAddToCart }) {
 
   function handleButtonClick() {
     onAddToCart(id, count);
+    setCount(1);
   }
 
   if (loading) {
@@ -55,7 +56,7 @@ function ProductDetail({ onAddToCart }) {
         </div>
         <div className="flex flex-col gap-6 md:flex-row md:gap-16">
           <div className="w-full h-auto md:w-1/2 md:h-screen aspect-square">
-            <img className="w-full aspect-square" src={product.thumbnail} />
+            <img className="w-full aspect-square " src={product.thumbnail} />
           </div>
           <div className="flex flex-col w-auto h-auto gap-4 md:w-1/2 md:h-screen">
             <h1 className="text-4xl font-medium text-gray-900 md:text-6xl font-heebo">
