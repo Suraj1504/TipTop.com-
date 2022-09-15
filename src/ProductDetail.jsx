@@ -47,7 +47,7 @@ function ProductDetail({ onAddToCart }) {
   }
 
   return (
-    <div className="px-12 py-8 bg-gray-200">
+    <div className="w-screen px-12 py-8 bg-gray-200">
       <div className="flex flex-col w-full h-full p-6 bg-white md:p-14">
         <div className="mb-8">
           <Link className="text-4xl md:text-5xl text-primary-dark" to="/">
