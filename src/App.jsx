@@ -5,10 +5,11 @@ import Header from "./Header";
 import Footer from "./Footer";
 import ProductDetail from "./ProductDetail";
 import NotFound from "./NotFound";
+import CartPage from "./CartPage";
 
 function App() {
   const discount = "10% OFF SALE!";
-
+  const suraj = 1;
   const savedDataString = localStorage.getItem("my-cart") || "{}";
   const savedData = JSON.parse(savedDataString);
   const [cart, setCart] = useState(savedData);
@@ -35,6 +36,7 @@ function App() {
           path="/product/:id/"
           element={<ProductDetail onAddToCart={handleAddTOCart} />}
         ></Route>
+        <Route path="/CartPage" element={<CartPage />}></Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer

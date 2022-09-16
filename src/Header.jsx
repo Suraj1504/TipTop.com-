@@ -10,7 +10,9 @@ function Header({ productCount }) {
         </p>
         <div className="flex flex-col items-center justify-items">
           <CgShoppingCart className="text-6xl text-primary-default" />
-          <span className="text-primary-default -mt-11">{productCount}</span>
+          <span className="-mt-10 -mr-1 text-sm text-primary-default">
+            {productCount}
+          </span>
         </div>
       </div>
     </div>
