@@ -6,6 +6,8 @@ import Footer from "./Footer";
 import ProductDetail from "./ProductDetail";
 import NotFound from "./NotFound";
 import CartPage from "./CartPage";
+import Login from "./Login";
+import Signup from "./Signup";
 
 function App() {
   const discount = "10% OFF SALE!";
@@ -37,6 +39,8 @@ function App() {
           element={<ProductDetail onAddToCart={handleAddTOCart} />}
         ></Route>
         <Route path="/CartPage" element={<CartPage />}></Route>
+        <Route path="/Signup" element={<Signup />}></Route>
+        <Route path="/Login" element={<Login />}></Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer

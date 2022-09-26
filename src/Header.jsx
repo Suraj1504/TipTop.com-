@@ -6,7 +6,7 @@ function Header({ productCount }) {
     <div className="py-4 bg-white">
       <div className="flex items-center justify-between max-w-6xl mx-5 md:mx-auto">
         <p className="text-2xl font-bold text-primary-default md:text-3xl font-heebo">
-          Suraj's Website
+          My E-Cart
         </p>
         <div className="flex flex-col items-center justify-items">
           <CgShoppingCart className="text-6xl text-primary-default" />

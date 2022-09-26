@@ -1,16 +1,12 @@
 import React from "react";
+import CartList from "./CartList";
 
 function CartPage() {
   return (
-    <div className="h-screen p-4 bg-gray-300">
-      <div className="p-4 bg-gray-300">
-        <div className="bg-white">
-          <div className="flex bg-gray-400 space-between">
-            <h1>Product</h1>
-            <h1>Price</h1>
-            <h1>Quantity</h1>
-            <h1>Subtotal</h1>
-          </div>
+    <div className="bg-gray-200 ">
+      <div className="h-screen mx-10 bg-white my-14">
+        <div className="py-20 bg-white px-28 space-between">
+          <CartList />
         </div>
       </div>
     </div>

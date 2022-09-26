@@ -6,6 +6,7 @@ import { BsBoxArrowInLeft, BsBoxArrowInRight } from "react-icons/bs";
 import { getProductData } from "./Api";
 import Loading from "./Loading";
 import NotFound from "./NotFound";
+import CartRow from "./CartRow";
 
 function ProductDetail({ onAddToCart }) {
   const id = +useParams().id;
@@ -36,6 +37,20 @@ function ProductDetail({ onAddToCart }) {
   function handleButtonClick() {
     onAddToCart(id, count);
     setCount(1);
+    setLoading(true);
+    <CartRow
+      image={product.thumbnail}
+      product={product.title}
+      price={product.price}
+      quantity={count}
+    />;
+  }
+
+  function handlePreviousClick() {
+    setLoading(true);
+  }
+  function handleNextClick() {
+    setLoading(true);
   }
 
   if (loading) {
@@ -90,6 +105,7 @@ function ProductDetail({ onAddToCart }) {
                 <Link
                   className="text-5xl lg:text-6xl hover:text-primary-dark text-primary-default"
                   to={"/product/" + (id - 1)}
+                  onClick={handlePreviousClick}
                 >
                   <BsBoxArrowInLeft />
                 </Link>
@@ -97,6 +113,7 @@ function ProductDetail({ onAddToCart }) {
               <Link
                 className="text-5xl lg:text-6xl hover:text-primary-dark text-primary-default"
                 to={"/product/" + (id + 1)}
+                onClick={handleNextClick}
               >
                 <BsBoxArrowInRight />
               </Link>
