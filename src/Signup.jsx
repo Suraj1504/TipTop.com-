@@ -1,37 +1,58 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { Link } from "react-router-dom";
 
 function Signup() {
-  function callSignupApi(values) {
+  function callSignApi(values) {
     console.log("Sending data", values.email, values.password);
   }
 
-  const schema = Yup.object().shape({
-    email: Yup.string().email().required(),
-    password: Yup.string().min(8).required(),
-    repeatPassword: Yup.string().min(8).required(),
+  const Schema = Yup.object().shape({
+    password: Yup.string().required("This field is required"),
+    changepassword: Yup.string().required("This field is required"),
   });
 
   const { handleSubmit, values, handleChange, errors, handleBlur, touched } =
     useFormik({
       initialValues: {
+        name: "",
         email: "",
         password: "",
-        repeatPassword: "",
+        changepassword: "",
       },
-      onSubmit: callSignupApi,
-      validationSchema: schema,
+      onSubmit: callSignApi,
+      validationSchema: Schema,
     });
 
   return (
-    <div className="h-screen px-12 py-6 bg-gray-200 ">
-      <form className="flex flex-col h-full px-32 py-12 bg-white">
+    <div className="px-12 py-6 bg-gray-200 ">
+      <form
         onSubmit={handleSubmit}
-        <h1 className="pb-4 font-sans text-3xl font-semibold text-gray-700">
-          Signup
-        </h1>
-        <div className="flex flex-col w-full h-full p-4 border border-gray-500 rounded-sm">
+        className="flex flex-col items-center w-auto h-full py-12 bg-white"
+      >
+        <div className="flex flex-col h-full p-4 border border-gray-500 rounded-sm w-96">
+          <h1 className="pb-4 font-sans text-3xl font-semibold text-gray-700">
+            Sign Up
+          </h1>
+          <label
+            htmlFor="username"
+            className="mt-2 font-sans font-medium text-gray-700 text-md"
+          >
+            Username
+          </label>
+          <input
+            value={values.name}
+            name="username"
+            type="name"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            id="username"
+            className="relative block w-full p-2 text-gray-900 border border-gray-400 appearance-none focus:outline-none"
+          />
+          {touched.username && (
+            <div className="text-primary-default">{errors.username}</div>
+          )}
           <label
             htmlFor="email-address"
             className="mt-2 font-sans font-medium text-gray-700 text-md"
@@ -39,30 +60,35 @@ function Signup() {
             Email address
           </label>
           <input
-            id="email-address"
+            value={values.email}
+            name="email"
             type="email"
-            autoComplete="email"
             onChange={handleChange}
             onBlur={handleBlur}
-            required
+            id="email-address"
             className="relative block w-full p-2 text-gray-900 border border-gray-400 appearance-none focus:outline-none"
           />
+          {touched.email && (
+            <div className="text-primary-default">{errors.email}</div>
+          )}
           <label
             htmlFor="password"
-            className="mt-2 font-sans font-medium text-gray-700 text-md"
+            className="mt-3 font-sans font-medium text-gray-700 text-md"
           >
             Password
           </label>
           <input
-            id="password"
+            value={values.password}
+            name="password"
             type="password"
-            autoComplete="password"
             onChange={handleChange}
             onBlur={handleBlur}
-            required
+            id="password"
             className="relative block w-full p-2 text-gray-900 border border-gray-400 appearance-none focus:outline-none"
           />
-
+          {touched.password && (
+            <div className="text-primary-default">{errors.password}</div>
+          )}
           <label
             htmlFor="repeat-password"
             className="mt-3 font-sans font-medium text-gray-700 text-md"
@@ -70,23 +96,36 @@ function Signup() {
             Repeat Password
           </label>
           <input
-            id="repeat-password"
+            value={values.changepassword}
+            name="password"
             type="password"
-            autoComplete="password"
             onChange={handleChange}
             onBlur={handleBlur}
-            required
+            id="repeat-password"
             className="relative block w-full p-2 text-gray-900 border border-gray-400 appearance-none focus:outline-none"
           />
+          {touched.password && (
+            <div className="text-primary-default">{errors.password}</div>
+          )}
           <div className="flex gap-1 mt-3">
             <input type="checkbox" id="forRemember" name="forRemember" />
             <label for="forRemember" className="font-medium text-gray-700 ">
               Remember me
             </label>
           </div>
-          <button className="py-1 mt-4 text-lg font-bold text-white rounded-md px-7 bg-primary-default hover:bg-primary-dark w-fit">
-            Signup
+          <button
+            type="submit"
+            className="w-full py-1 mt-1 text-lg font-bold text-white rounded-md bg-primary-default hover:bg-primary-dark "
+          >
+            Sign up
           </button>
+          <p className="mt-3 font-semibold text-center text-gray-700">OR</p>
+          <div className="flex justify-center gap-1 mt-3">
+            <p>Already a user?</p>
+            <Link className="underline text-primary-default " to="/Login">
+              LOGIN
+            </Link>
+          </div>
         </div>
       </form>
     </div>

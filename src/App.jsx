@@ -8,6 +8,7 @@ import NotFound from "./NotFound";
 import CartPage from "./CartPage";
 import Login from "./Login";
 import Signup from "./Signup";
+import ForgotPassword from "./ForgotPassword";
 
 function App() {
   const discount = "10% OFF SALE!";
@@ -41,6 +42,7 @@ function App() {
         <Route path="/CartPage" element={<CartPage />}></Route>
         <Route path="/Signup" element={<Signup />}></Route>
         <Route path="/Login" element={<Login />}></Route>
+        <Route path="/ForgotPassword" element={<ForgotPassword />}></Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer
