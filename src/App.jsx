@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import ProductListPage from "./ProductListPage";
-import Header from "./Header";
+import NavBar from "./NavBar";
 import Footer from "./Footer";
 import ProductDetail from "./ProductDetail";
 import NotFound from "./NotFound";
@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div className="flex flex-col h-screen overflow-y-scroll bg-slate-200 ">
-      <Header productCount={totalCount} />
+      <NavBar productCount={totalCount} />
       <Routes>
         <Route index element={<ProductListPage d={discount} />}></Route>
         <Route

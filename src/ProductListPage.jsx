@@ -1,25 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import ProductList from './ProductList';
-import NextPage from './NextPage';
-import NoMatching from './NoMatching';
-import { getProductList } from './Api';
+import React, { useState, useEffect } from "react";
+import ProductList from "./ProductList";
+import NextPage from "./NextPage";
+import NoMatching from "./NoMatching";
+import { getProductList } from "./Api";
 import Loading from "./Loading";
 
-
-function ProductListPage({d}) {
+function ProductListPage({ d }) {
   const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(true);
-  useEffect(function() {
+  useEffect(function () {
     const p = getProductList();
 
-    p.then(function(products) {
+    p.then(function (products) {
       setProductList(products);
       setLoading(false);
     });
   }, []);
 
-  const [query, setQuery] = useState('');
-  const [sort, setSort] = useState('default');
+  const [query, setQuery] = useState("");
+  const [sort, setSort] = useState("default");
 
   function handleQueryChange(event) {
     setQuery(event.target.value);
@@ -29,43 +28,43 @@ function ProductListPage({d}) {
     setSort(event.target.value);
   }
 
-  let data = productList.filter(function(item) {
+  let data = productList.filter(function (item) {
     const lowerCaseTitle = item.title.toLowerCase();
     const lowerCaseQuery = query.toLowerCase();
 
     return lowerCaseTitle.indexOf(lowerCaseQuery) != -1;
   });
 
-  if (sort == 'title') {
-    data.sort(function(x, y) {
+  if (sort == "title") {
+    data.sort(function (x, y) {
       return x.title < y.title ? -1 : 1;
     });
-  } else if (sort == 'priceLow') {
-    data.sort(function(x, y) {
+  } else if (sort == "priceLow") {
+    data.sort(function (x, y) {
       return x.price - y.price;
     });
-  } else if (sort == 'priceHigh') {
-    data.sort(function(x, y) {
+  } else if (sort == "priceHigh") {
+    data.sort(function (x, y) {
       return y.price - x.price;
     });
   }
 
   if (loading) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
     <div>
       <div className="my-8 px-9 py-12.5 max-w-6xl mx-auto bg-white shadow">
-        <div className="flex flex-col md:flex-row place-content-between my-16 gap-4">
+        <div className="flex flex-col gap-4 my-16 md:flex-row place-content-between">
           <input
-            className="border border-gray-700 rounded-md px-2"
+            className="p-2 border border-gray-700 rounded-md"
             onChange={handleQueryChange}
             value={query}
             placeholder="search"
           />
           <select
-            className="border border-gray-700 rounded-md"
+            className="p-2 border border-gray-700 rounded-md"
             onChange={handleSortChange}
             value={sort}
           >
